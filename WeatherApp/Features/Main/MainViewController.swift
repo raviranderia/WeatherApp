@@ -9,17 +9,20 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    let requestManager = RequestManager(apiKey: "e0ba8833aa1edee3f8d9c45c87dc412c", temperatureFormat: .Celsius)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        requestManager.dailyForecastWeatherByCityNameAsJson(cityName: "Mumbai", numberOfDays: 7) { (result) in
+            switch result {
+            case .Error(let error):
+                print(error)
+            case .Success(let json):
+                print(json)
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
