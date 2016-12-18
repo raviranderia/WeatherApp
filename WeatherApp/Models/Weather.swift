@@ -13,6 +13,7 @@ struct Weather {
     var clouds: Int
     var humidity: Double
     var dateTime: String
+    var day: String
     var speed: Double
     var pressure: Double
     var degree: Double
@@ -23,17 +24,18 @@ struct Weather {
     var iconId: String
     
     //temp
-    var night: Double?
-    var day: Double?
-    var morning: Double?
-    var evening: Double?
-    var min: Double?
-    var max: Double?
+    var nightTemp: Double?
+    var dayTemp: Double?
+    var morningTemp: Double?
+    var eveningTemp: Double?
+    var minTemp: Double?
+    var maxTemp: Double?
     
     init(weatherJSON: JSON) {
         self.clouds = weatherJSON["clouds"].intValue
         self.humidity = weatherJSON["humidity"].doubleValue
         self.dateTime = weatherJSON["dt"].doubleValue.convertTimeToString()
+        self.day = weatherJSON["dt"].doubleValue.getDayFromTimestamp()
         self.speed = weatherJSON["speed"].doubleValue
         self.pressure = weatherJSON["pressure"].doubleValue
         self.degree = weatherJSON["degree"].doubleValue
@@ -45,12 +47,12 @@ struct Weather {
         
         
         if let temparature = weatherJSON["temp"].dictionaryObject {
-            self.night = temparature["night"] as? Double
-            self.day = temparature["day"] as? Double
-            self.morning = temparature["morn"] as? Double
-            self.evening = temparature["eve"] as? Double
-            self.min = temparature["min"] as? Double
-            self.max = temparature["max"] as? Double
+            self.nightTemp = temparature["night"] as? Double
+            self.dayTemp = temparature["day"] as? Double
+            self.morningTemp = temparature["morn"] as? Double
+            self.eveningTemp = temparature["eve"] as? Double
+            self.minTemp = temparature["min"] as? Double
+            self.maxTemp = temparature["max"] as? Double
         }
     
     }
