@@ -51,18 +51,18 @@ struct Weather {
         
         
         if let temperature = weatherJSON["temp"].dictionaryObject {
-            self.nightTemp = temparature["night"] as? Double
-            self.dayTemp = temparature["day"] as? Double
-            self.morningTemp = temparature["morn"] as? Double
-            self.eveningTemp = temparature["eve"] as? Double
-            self.minTemp = temparature["min"] as? Double
-            self.maxTemp = temparature["max"] as? Double
+            self.nightTemp = temperature["night"] as? Double
+            self.dayTemp = temperature["day"] as? Double
+            self.morningTemp = temperature["morn"] as? Double
+            self.eveningTemp = temperature["eve"] as? Double
+            self.minTemp = temperature["min"] as? Double
+            self.maxTemp = temperature["max"] as? Double
         }
         
         if let currentTemperature = weatherJSON["main"].dictionaryObject {
             self.currentTemperature = currentTemperature["temp"] as? Double
-            self.minTemp = temparature["temp_min"] as? Double
-            self.maxTemp = temparature["temp_max"] as? Double
+            self.minTemp = currentTemperature["temp_min"] as? Double
+            self.maxTemp = currentTemperature["temp_max"] as? Double
         }
     
     }
