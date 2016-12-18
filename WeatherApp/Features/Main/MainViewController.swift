@@ -10,17 +10,11 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let requestManager = RequestManager(apiKey: "e0ba8833aa1edee3f8d9c45c87dc412c", temperatureFormat: .Celsius)
-
+    let weatherForecastManager = WeatherForecastManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestManager.dailyForecastWeatherByCityNameAsJson(cityName: "Mumbai", numberOfDays: 7) { (result) in
-            switch result {
-            case .Error(let error):
-                print(error)
-            case .Success(let json):
-                print(json)
-            }
+        weatherForecastManager.fetchForecastList { (weatherArray) in
         }
     }
 

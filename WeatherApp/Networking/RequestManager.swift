@@ -64,7 +64,7 @@ class RequestManager {
             let responseResult = weatherResponse.result
             if responseResult.isSuccess {
                 let jsonDictionary = JSON(responseResult.value as Any)
-                print(jsonDictionary)
+                response(.Success(jsonDictionary))
             } else {
                 response(.Error(responseResult.error.debugDescription))
             }

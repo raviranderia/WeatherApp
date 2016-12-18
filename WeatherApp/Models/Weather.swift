@@ -18,9 +18,9 @@ struct Weather {
     var degree: Double
     
     //weather
-    var mainWeather: String?
-    var mainWeatherDescription: String?
-    var iconId: String?
+    var mainWeather: String
+    var mainWeatherDescription: String
+    var iconId: String
     
     //temp
     var night: Double?
@@ -38,17 +38,17 @@ struct Weather {
         self.pressure = weatherJSON["pressure"].doubleValue
         self.degree = weatherJSON["degree"].doubleValue
         
-        if let weather = weatherJSON["weather"].dictionaryObject {
-            self.mainWeather = weather["main"] as? String
-            self.mainWeatherDescription = weather["description"] as? String
-            self.iconId = weather["icon"] as? String
-        }
+        let weather = weatherJSON["weather"].arrayValue
+        self.mainWeather = weather[0]["main"].stringValue
+        self.mainWeatherDescription = weather[0]["description"].stringValue
+        self.iconId = weather[0]["icon"].stringValue
+        
         
         if let temparature = weatherJSON["temp"].dictionaryObject {
             self.night = temparature["night"] as? Double
             self.day = temparature["day"] as? Double
-            self.morning = temparature["morning"] as? Double
-            self.evening = temparature["evening"] as? Double
+            self.morning = temparature["morn"] as? Double
+            self.evening = temparature["eve"] as? Double
             self.min = temparature["min"] as? Double
             self.max = temparature["max"] as? Double
         }
