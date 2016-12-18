@@ -22,23 +22,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VVl-1E-Iop">
-                                <rect key="frame" x="0.0" y="151" width="375" height="516"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VVl-1E-Iop">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="T7a-tW-sqB" customClass="WeatherTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="T7a-tW-sqB" customClass="WeatherTableViewCell" customModule="WeatherApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T7a-tW-sqB" id="vmu-9o-UNJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JmL-Rm-B6A">
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JmL-Rm-B6A">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvZ-s1-mvJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="166" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="158" height="43.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -50,7 +49,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Viv-x0-y62">
-                                                            <rect key="frame" x="209.5" y="0.0" width="123.5" height="43.5"/>
+                                                            <rect key="frame" x="217.5" y="0.0" width="107.5" height="43.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -64,7 +63,6 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="Viv-x0-y62" firstAttribute="top" secondItem="JmL-Rm-B6A" secondAttribute="top" id="7Bx-fH-DK7"/>
-                                                        <constraint firstItem="Viv-x0-y62" firstAttribute="leading" secondItem="qIx-wj-JsM" secondAttribute="trailing" id="8v3-cu-1E1"/>
                                                         <constraint firstAttribute="trailing" secondItem="pUh-MG-Z9m" secondAttribute="trailing" id="Alw-rq-Vwn"/>
                                                         <constraint firstItem="yvZ-s1-mvJ" firstAttribute="top" secondItem="JmL-Rm-B6A" secondAttribute="top" id="BWJ-TB-43J"/>
                                                         <constraint firstAttribute="bottom" secondItem="pUh-MG-Z9m" secondAttribute="bottom" id="E7Z-F2-29R"/>
@@ -72,6 +70,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="Viv-x0-y62" secondAttribute="bottom" id="Xwd-DU-f6j"/>
                                                         <constraint firstAttribute="bottom" secondItem="yvZ-s1-mvJ" secondAttribute="bottom" id="a0F-Ze-8lM"/>
                                                         <constraint firstItem="qIx-wj-JsM" firstAttribute="centerX" secondItem="JmL-Rm-B6A" secondAttribute="centerX" id="cHo-iH-aBj"/>
+                                                        <constraint firstItem="pUh-MG-Z9m" firstAttribute="leading" secondItem="Viv-x0-y62" secondAttribute="trailing" constant="8" id="dLc-lR-Qt9"/>
                                                         <constraint firstItem="pUh-MG-Z9m" firstAttribute="top" secondItem="JmL-Rm-B6A" secondAttribute="top" id="fvu-iN-vZd"/>
                                                     </constraints>
                                                 </stackView>
@@ -91,10 +90,23 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="H5N-E1-d7U"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="g3d-X8-h9Z"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VVl-1E-Iop" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2ef-iF-z1E"/>
+                            <constraint firstAttribute="trailing" secondItem="VVl-1E-Iop" secondAttribute="trailing" id="58n-TN-FtB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VVl-1E-Iop" secondAttribute="bottom" id="a38-J2-3d2"/>
+                            <constraint firstItem="VVl-1E-Iop" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zem-ge-Pvf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherTableView" destination="VVl-1E-Iop" id="t2w-0h-8tJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

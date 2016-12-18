@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class WeatherTableViewCell: UITableViewCell {
     
@@ -15,7 +16,11 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     
-    func configureCell(weatherData: Weather) {
-        self.dayLabel.text = weatherData.day
+    func configureCell(weatherTableCellViewModel: WeatherTableViewCellModel) {
+        self.dayLabel.text = weatherTableCellViewModel.dayLabel
+        self.maxTempLabel.text = weatherTableCellViewModel.maxTempLabel
+        self.minTempLabel.text = weatherTableCellViewModel.minTempLabel
+        guard let iconImageURL = weatherTableCellViewModel.iconImageURL else { return }
+        iconImageView.af_setImage(withURL: iconImageURL)
     }
 }
