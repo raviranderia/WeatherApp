@@ -56,7 +56,14 @@ class RequestManager {
         params["cnt"] = numberOfDays as AnyObject?
         params["mode"] = "json" as AnyObject?
         
-        dailyForecastWeather(parameters: params) { data($0) }
+        dailyForecastWeather() { data($0) }
+    }
+    
+    public func currentWeatherForecastByCityNameAsJson(cityName: String,data: @escaping (WeatherResult) -> Void) {
+        params["q"] = cityName as AnyObject?
+        params["mode"] = "json" as AnyObject?
+
+        currentWeatherForecast() { data($0) }
     }
     
     private func apiCall(method: Router, response: @escaping (WeatherResult) -> Void) {
@@ -72,7 +79,11 @@ class RequestManager {
         }
     }
     
-    private func dailyForecastWeather(parameters: [String:AnyObject], data: @escaping (WeatherResult) -> Void) {
+    private func currentWeatherForecast(data: @escaping (WeatherResult) -> Void) {
+        apiCall(method: Router.Weather(params)) { data($0) }
+    }
+    
+    private func dailyForecastWeather(data: @escaping (WeatherResult) -> Void) {
         apiCall(method: Router.DailyForecast(params)) { data($0) }
     }
 

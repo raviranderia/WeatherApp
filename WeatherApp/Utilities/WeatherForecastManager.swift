@@ -35,5 +35,17 @@ struct WeatherForecastManager {
             }
         }
     }
+    
+    func fetchCurrentWeather(handler: @escaping (Weather?) -> Void) {
+        requestManager.currentWeatherForecastByCityNameAsJson(cityName: currentCity) { weatherResult in
+            switch weatherResult {
+            case .Success(let jsonResult):
+                handler(Weather(weatherJSON: jsonResult))
+            case .Error(let error):
+                print(error)
+                handler(nil)
+            }
+        }
+    }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var weatherTableView: UITableView!
     var weatherForecastArray = [Weather]()
@@ -24,6 +24,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 strongSelf.weatherTableView.reloadData()
             }
+        }
+    }
+    
+    private func configureWeatherForecastArray() {
+        weatherForecastManager.fetchForecastList { [weak self] weatherArray in
+            guard let strongSelf = self,
+                let weatherForecastArray = weatherArray else { return }
+            strongSelf.weatherForecastArray = weatherForecastArray
+            DispatchQueue.main.async {
+                strongSelf.weatherTableView.reloadData()
+            }
+        }
+    }
+    
+    private func configureCurrentWeather() {
+        weatherForecastManager.fetchCurrentWeather { (currentWeather) in
+            
         }
     }
     
