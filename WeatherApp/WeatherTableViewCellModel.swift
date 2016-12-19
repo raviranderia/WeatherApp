@@ -18,8 +18,8 @@ struct WeatherTableViewCellModel {
     init(weatherData: Weather) {
         self.dayLabel = weatherData.day
         if let maxTemp = weatherData.maxTemp, let minTemp = weatherData.minTemp {
-            self.maxTempLabel = Int(maxTemp).description
-            self.minTempLabel = Int(minTemp).description
+            self.maxTempLabel = Int(maxTemp).description.degree
+            self.minTempLabel = Int(minTemp).description.degree
         }
         if let url = URL(string: "http://openweathermap.org/img/w/" + weatherData.iconId + ".png") {
             self.iconImageURL = url

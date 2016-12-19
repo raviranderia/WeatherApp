@@ -25,6 +25,7 @@ final class TableHeaderView: UIView {
         maxLabel.text = tableHeaderViewModel.maxLabel
         guard let imageURL = tableHeaderViewModel.currentWeatherImageURL else { return }
         self.mainWeatherImageView.af_setImage(withURL: imageURL)
+        self.backgroundColor = UIColor.blue
     }
     
     class func instanceFromNib() -> TableHeaderView {

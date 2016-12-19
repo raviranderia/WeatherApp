@@ -59,10 +59,26 @@ struct Weather {
             self.maxTemp = temperature["max"] as? Double
         }
         
+        //Parsing for current temperature
         if let currentTemperature = weatherJSON["main"].dictionaryObject {
             self.currentTemperature = currentTemperature["temp"] as? Double
             self.minTemp = currentTemperature["temp_min"] as? Double
             self.maxTemp = currentTemperature["temp_max"] as? Double
+            guard let pressure = currentTemperature["pressure"] as? Double,
+                let humidity = currentTemperature["humidity"] as? Double else { return }
+            self.pressure = pressure
+            self.humidity = humidity
+        }
+        
+        if let windInformation = weatherJSON["wind"].dictionaryObject {
+            guard let speed = windInformation["speed"] as? Double, let degree = windInformation["deg"] as? Double else { return }
+            self.speed = speed
+            self.degree = degree
+        }
+        
+        if let cloudInformation = weatherJSON["clouds"].dictionaryObject {
+            guard let allClouds = cloudInformation["all"] as? Int else { return }
+            self.clouds = allClouds
         }
     
     }

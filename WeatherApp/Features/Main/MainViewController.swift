@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PureLayout
 
 final class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -34,6 +35,7 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
         let tableFooterView = TableFooterView.instanceFromNib()
         tableFooterView.configureWeatherDetailsTableView(weatherData: currentWeather)
         weatherTableView.tableFooterView = tableFooterView
+        weatherTableView.tableFooterView?.frame.size = CGSize(width: view.frame.width, height: tableFooterView.weatherDetailsTableView.contentSize.height)
     }
     
     private func configureWeatherForecastArray() {
@@ -50,7 +52,6 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
     private func configureCurrentWeather() {
         weatherForecastManager.fetchCurrentWeather { (currentWeather) in
             DispatchQueue.main.async {
-                print(currentWeather)
                 self.configureTableViewHeader(currentWeather: currentWeather)
                 self.configureTableViewFooter(currentWeather: currentWeather)
             }
@@ -68,7 +69,6 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.configureCell(weatherTableCellViewModel: weatherTableViewCellModel)
         return cell
     }
-    
 
 }
 
