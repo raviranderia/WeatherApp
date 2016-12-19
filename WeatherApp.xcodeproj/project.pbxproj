@@ -18,6 +18,7 @@
 		0DC7FFDB1E07E8A000318C23 /* TableFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFD91E07E8A000318C23 /* TableFooterViewCell.swift */; };
 		0DC7FFDC1E07E8A000318C23 /* TableFooterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC7FFDA1E07E8A000318C23 /* TableFooterViewCell.xib */; };
 		0DC7FFDE1E08097800318C23 /* String+Degree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFDD1E08097800318C23 /* String+Degree.swift */; };
+		0DC7FFE11E08170400318C23 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFE01E08170400318C23 /* ErrorViewController.swift */; };
 		0DFAB40C1E0675F400DD1EF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFAB40B1E0675F400DD1EF9 /* AppDelegate.swift */; };
 		0DFAB4111E0675F400DD1EF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DFAB40F1E0675F400DD1EF9 /* Main.storyboard */; };
 		0DFAB4161E0675F400DD1EF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DFAB4141E0675F400DD1EF9 /* LaunchScreen.storyboard */; };
@@ -56,6 +57,7 @@
 		0DC7FFD91E07E8A000318C23 /* TableFooterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableFooterViewCell.swift; path = Features/Main/TableViewFooter/TableFooterCell/TableFooterViewCell.swift; sourceTree = "<group>"; };
 		0DC7FFDA1E07E8A000318C23 /* TableFooterViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableFooterViewCell.xib; path = Features/Main/TableViewFooter/TableFooterCell/TableFooterViewCell.xib; sourceTree = "<group>"; };
 		0DC7FFDD1E08097800318C23 /* String+Degree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Degree.swift"; path = "Extensions/String+Degree.swift"; sourceTree = "<group>"; };
+		0DC7FFE01E08170400318C23 /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorViewController.swift; path = Features/Error/ErrorViewController.swift; sourceTree = "<group>"; };
 		0DFAB4081E0675F400DD1EF9 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DFAB40B1E0675F400DD1EF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DFAB4101E0675F400DD1EF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			name = TableFooterCell;
 			sourceTree = "<group>";
 		};
+		0DC7FFDF1E0816B300318C23 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				0DC7FFE01E08170400318C23 /* ErrorViewController.swift */,
+			);
+			name = Error;
+			sourceTree = "<group>";
+		};
 		0DFAB3FF1E0675F400DD1EF9 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				0DFAB42E1E06777500DD1EF9 /* Main */,
+				0DC7FFDF1E0816B300318C23 /* Error */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -474,6 +485,7 @@
 				0DC7FFDE1E08097800318C23 /* String+Degree.swift in Sources */,
 				0DC7FFCD1E07D1E500318C23 /* TableHeaderViewModel.swift in Sources */,
 				0DFAB4411E06B0E200DD1EF9 /* WeatherForecastManager.swift in Sources */,
+				0DC7FFE11E08170400318C23 /* ErrorViewController.swift in Sources */,
 				0DC7FFD71E07E6E900318C23 /* TableFooterViewCellModel.swift in Sources */,
 				0DFAB4431E06B10B00DD1EF9 /* Double+NSDate.swift in Sources */,
 			);

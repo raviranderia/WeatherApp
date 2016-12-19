@@ -17,8 +17,8 @@ public enum TemperatureFormat: String {
     case Kelvin = ""
 }
 
-public enum WeatherResult {
-    case Success(JSON)
+public enum WeatherResult<T> {
+    case Success(T)
     case Error(String)
     
     public var isSuccess: Bool {
@@ -33,57 +33,60 @@ public enum WeatherResult {
 
 
 final class RequestManager {
-    private var params = [String : AnyObject]()
+    private var params = [String : Any]()
     public var temperatureFormat: TemperatureFormat = .Kelvin {
         didSet {
-            params["units"] = temperatureFormat.rawValue as AnyObject?
+            params["units"] = temperatureFormat.rawValue as Any?
         }
     }
     
     public init(apiKey: String) {
-        params["appid"] = apiKey as AnyObject?
+        params["appid"] = apiKey as Any?
     }
     
     public convenience init(apiKey: String, temperatureFormat: TemperatureFormat) {
         self.init(apiKey: apiKey)
         self.temperatureFormat = temperatureFormat
-        self.params["units"] = temperatureFormat.rawValue as AnyObject?
+        self.params["units"] = temperatureFormat.rawValue as Any?
         
     }
     
-    public func dailyForecastWeatherByCityNameAsJson(cityName: String, numberOfDays: Int, data: @escaping (WeatherResult) -> Void) {
-        params["q"] = cityName as AnyObject?
-        params["cnt"] = numberOfDays as AnyObject?
-        params["mode"] = "json" as AnyObject?
+    public func dailyForecastWeatherByCityNameAsJson(cityName: String, numberOfDays: Int, data: @escaping (WeatherResult<JSON>) -> Void) {
+        params["q"] = cityName as Any?
+        params["cnt"] = numberOfDays as Any?
+        params["mode"] = "json" as Any?
         
         dailyForecastWeather() { data($0) }
     }
     
-    public func currentWeatherForecastByCityNameAsJson(cityName: String,data: @escaping (WeatherResult) -> Void) {
-        params["q"] = cityName as AnyObject?
-        params["mode"] = "json" as AnyObject?
+    public func currentWeatherForecastByCityNameAsJson(cityName: String,data: @escaping (WeatherResult<JSON>) -> Void) {
+        params["q"] = cityName as Any?
+        params["mode"] = "json" as Any?
 
         currentWeatherForecast() { data($0) }
     }
     
-    private func apiCall(method: Router, response: @escaping (WeatherResult) -> Void) {
+    private func apiCall(method: Router, response: @escaping (WeatherResult<JSON>) -> Void) {
         Alamofire.request(method).responseJSON { (weatherResponse) in
             let responseResult = weatherResponse.result
             if responseResult.isSuccess {
                 let jsonDictionary = JSON(responseResult.value as Any)
                 response(.Success(jsonDictionary))
-            } else {
-                response(.Error(responseResult.error.debugDescription))
+            } else if let error = responseResult.error {
+                response(.Error(error.localizedDescription))
+            }
+            else {
+                response(.Error("Error"))
             }
             
         }
     }
     
-    private func currentWeatherForecast(data: @escaping (WeatherResult) -> Void) {
+    private func currentWeatherForecast(data: @escaping (WeatherResult<JSON>) -> Void) {
         apiCall(method: Router.Weather(params)) { data($0) }
     }
     
-    private func dailyForecastWeather(data: @escaping (WeatherResult) -> Void) {
+    private func dailyForecastWeather(data: @escaping (WeatherResult<JSON>) -> Void) {
         apiCall(method: Router.DailyForecast(params)) { data($0) }
     }
 
