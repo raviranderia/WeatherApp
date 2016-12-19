@@ -19,7 +19,7 @@ struct WeatherForecastManager {
         self.requestManager = requestManager
     }
     
-    func fetchForecastList(handler: @escaping (([Weather]?) -> Void)) {
+    func fetchForecastList(handler: @escaping (( WeatherResult<[Weather]?>) -> Void)) {
         var finalForecastArray = [Weather]()
         requestManager.dailyForecastWeatherByCityNameAsJson(cityName: currentCity, numberOfDays: numberOfDays) { (weatherResult) in
             switch weatherResult {
@@ -28,22 +28,21 @@ struct WeatherForecastManager {
                 for dayForecast in weatherForecastArray {
                     finalForecastArray.append(Weather(weatherJSON: dayForecast))
                 }
-                handler(finalForecastArray)
+                handler(.Success(finalForecastArray))
             case .Error(let error):
-                print(error)
-                handler(nil)
+                handler(.Error(error))
             }
         }
     }
     
-    func fetchCurrentWeather(handler: @escaping (Weather?) -> Void) {
+    func fetchCurrentWeather(handler: @escaping (WeatherResult<(Weather?)>) -> Void) {
         requestManager.currentWeatherForecastByCityNameAsJson(cityName: currentCity) { weatherResult in
             switch weatherResult {
             case .Success(let jsonResult):
-                handler(Weather(weatherJSON: jsonResult))
+                handler(.Success(Weather(weatherJSON: jsonResult)))
             case .Error(let error):
                 print(error)
-                handler(nil)
+                handler(.Error(error))
             }
         }
     }

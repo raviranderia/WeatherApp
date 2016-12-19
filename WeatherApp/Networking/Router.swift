@@ -13,10 +13,10 @@ enum Router: URLRequestConvertible {
     static let baseURLString = "http://api.openweathermap.org/data/"
     static let apiVersion = "2.5"
     
-    case Weather([String: AnyObject])
-    case Forecast([String: AnyObject])
-    case DailyForecast([String: AnyObject])
-    case HirstoricData([String: AnyObject])
+    case Weather([String: Any])
+    case Forecast([String: Any])
+    case DailyForecast([String: Any])
+    case HirstoricData([String: Any])
     
     var path: String {
         switch self {

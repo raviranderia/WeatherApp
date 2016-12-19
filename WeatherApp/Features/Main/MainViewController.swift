@@ -15,9 +15,12 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private var weatherForecastArray = [Weather]()
     private let weatherForecastManager = WeatherForecastManager()
+    private let errorSegueIdentifier = "internetConnectionSegue"
+    private var errorMessage: String?
+
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureWeatherForecastArray()
         configureCurrentWeather()
     }
@@ -39,21 +42,35 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func configureWeatherForecastArray() {
-        weatherForecastManager.fetchForecastList { [weak self] weatherArray in
-            guard let strongSelf = self,
-                let weatherForecastArray = weatherArray else { return }
-            strongSelf.weatherForecastArray = weatherForecastArray
-            DispatchQueue.main.async {
-                strongSelf.weatherTableView.reloadData()
+        weatherForecastManager.fetchForecastList { [weak self] weatherResult in
+            guard let strongSelf = self else { return }
+            switch weatherResult {
+            case .Success(let weatherForecastArray):
+                if let weatherForecastArray = weatherForecastArray {
+                    strongSelf.weatherForecastArray = weatherForecastArray
+                    DispatchQueue.main.async {
+                        strongSelf.weatherTableView.reloadData()
+                    }
+                }
+            case .Error(let error):
+                strongSelf.displayErrorAlert(message: error)
             }
         }
     }
     
     private func configureCurrentWeather() {
-        weatherForecastManager.fetchCurrentWeather { (currentWeather) in
-            DispatchQueue.main.async {
-                self.configureTableViewHeader(currentWeather: currentWeather)
-                self.configureTableViewFooter(currentWeather: currentWeather)
+        weatherForecastManager.fetchCurrentWeather { [weak self] (weatherResult) in
+            guard let strongSelf = self else { return }
+            switch weatherResult {
+            case .Success(let currentWeather):
+                if let currentWeather = currentWeather {
+                    DispatchQueue.main.async {
+                        strongSelf.configureTableViewHeader(currentWeather: currentWeather)
+                        strongSelf.configureTableViewFooter(currentWeather: currentWeather)
+                    }
+                }
+            case .Error(let error):
+                strongSelf.displayErrorAlert(message: error)
             }
         }
     }
@@ -68,6 +85,22 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
         let weatherTableViewCellModel = WeatherTableViewCellModel(weatherData: weatherForecastArray[indexPath.row])
         cell.configureCell(weatherTableCellViewModel: weatherTableViewCellModel)
         return cell
+    }
+    
+    func displayErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+            self.errorMessage = message
+            self.performSegue(withIdentifier: self.errorSegueIdentifier , sender: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? ErrorViewController {
+            destinationVC.errorMessage = errorMessage
+        }
     }
 
 }
