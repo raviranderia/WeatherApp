@@ -7,15 +7,67 @@
 //
 
 import UIKit
+import PureLayout
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let weatherForecastManager = WeatherForecastManager()
+    @IBOutlet weak var weatherTableView: UITableView!
+    
+    private var weatherForecastArray = [Weather]()
+    private let weatherForecastManager = WeatherForecastManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherForecastManager.fetchForecastList { (weatherArray) in
+        configureWeatherForecastArray()
+        configureCurrentWeather()
+    }
+    
+    private func configureTableViewHeader(currentWeather: Weather?) {
+        guard let currentWeather = currentWeather else { return }
+        let tableHeaderView = TableHeaderView.instanceFromNib()
+        let tableHeaderViewModel = TableHeaderViewModel(weatherData: currentWeather)
+        tableHeaderView.configureTableViewHeader(tableHeaderViewModel: tableHeaderViewModel)
+        weatherTableView.tableHeaderView = tableHeaderView
+    }
+    
+    private func configureTableViewFooter(currentWeather: Weather?) {
+        guard let currentWeather = currentWeather else { return }
+        let tableFooterView = TableFooterView.instanceFromNib()
+        tableFooterView.configureWeatherDetailsTableView(weatherData: currentWeather)
+        weatherTableView.tableFooterView = tableFooterView
+        weatherTableView.tableFooterView?.frame.size = CGSize(width: view.frame.width, height: tableFooterView.weatherDetailsTableView.contentSize.height)
+    }
+    
+    private func configureWeatherForecastArray() {
+        weatherForecastManager.fetchForecastList { [weak self] weatherArray in
+            guard let strongSelf = self,
+                let weatherForecastArray = weatherArray else { return }
+            strongSelf.weatherForecastArray = weatherForecastArray
+            DispatchQueue.main.async {
+                strongSelf.weatherTableView.reloadData()
+            }
         }
+    }
+    
+    private func configureCurrentWeather() {
+        weatherForecastManager.fetchCurrentWeather { (currentWeather) in
+            DispatchQueue.main.async {
+                self.configureTableViewHeader(currentWeather: currentWeather)
+                self.configureTableViewFooter(currentWeather: currentWeather)
+            }
+        }
+    }
+    
+    // MARK: TableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weatherForecastArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! WeatherTableViewCell
+        let weatherTableViewCellModel = WeatherTableViewCellModel(weatherData: weatherForecastArray[indexPath.row])
+        cell.configureCell(weatherTableCellViewModel: weatherTableViewCellModel)
+        return cell
     }
 
 }

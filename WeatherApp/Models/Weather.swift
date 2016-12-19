@@ -13,6 +13,7 @@ struct Weather {
     var clouds: Int
     var humidity: Double
     var dateTime: String
+    var day: String
     var speed: Double
     var pressure: Double
     var degree: Double
@@ -23,17 +24,22 @@ struct Weather {
     var iconId: String
     
     //temp
-    var night: Double?
-    var day: Double?
-    var morning: Double?
-    var evening: Double?
-    var min: Double?
-    var max: Double?
+    var nightTemp: Double?
+    var dayTemp: Double?
+    var morningTemp: Double?
+    var eveningTemp: Double?
+    var minTemp: Double?
+    var maxTemp: Double?
+    
+    //currentTemerature
+    var currentTemperature: Double?
+    
     
     init(weatherJSON: JSON) {
         self.clouds = weatherJSON["clouds"].intValue
         self.humidity = weatherJSON["humidity"].doubleValue
         self.dateTime = weatherJSON["dt"].doubleValue.convertTimeToString()
+        self.day = weatherJSON["dt"].doubleValue.getDayFromTimestamp()
         self.speed = weatherJSON["speed"].doubleValue
         self.pressure = weatherJSON["pressure"].doubleValue
         self.degree = weatherJSON["degree"].doubleValue
@@ -44,13 +50,35 @@ struct Weather {
         self.iconId = weather[0]["icon"].stringValue
         
         
-        if let temparature = weatherJSON["temp"].dictionaryObject {
-            self.night = temparature["night"] as? Double
-            self.day = temparature["day"] as? Double
-            self.morning = temparature["morn"] as? Double
-            self.evening = temparature["eve"] as? Double
-            self.min = temparature["min"] as? Double
-            self.max = temparature["max"] as? Double
+        if let temperature = weatherJSON["temp"].dictionaryObject {
+            self.nightTemp = temperature["night"] as? Double
+            self.dayTemp = temperature["day"] as? Double
+            self.morningTemp = temperature["morn"] as? Double
+            self.eveningTemp = temperature["eve"] as? Double
+            self.minTemp = temperature["min"] as? Double
+            self.maxTemp = temperature["max"] as? Double
+        }
+        
+        //Parsing for current temperature
+        if let currentTemperature = weatherJSON["main"].dictionaryObject {
+            self.currentTemperature = currentTemperature["temp"] as? Double
+            self.minTemp = currentTemperature["temp_min"] as? Double
+            self.maxTemp = currentTemperature["temp_max"] as? Double
+            guard let pressure = currentTemperature["pressure"] as? Double,
+                let humidity = currentTemperature["humidity"] as? Double else { return }
+            self.pressure = pressure
+            self.humidity = humidity
+        }
+        
+        if let windInformation = weatherJSON["wind"].dictionaryObject {
+            guard let speed = windInformation["speed"] as? Double, let degree = windInformation["deg"] as? Double else { return }
+            self.speed = speed
+            self.degree = degree
+        }
+        
+        if let cloudInformation = weatherJSON["clouds"].dictionaryObject {
+            guard let allClouds = cloudInformation["all"] as? Int else { return }
+            self.clouds = allClouds
         }
     
     }
