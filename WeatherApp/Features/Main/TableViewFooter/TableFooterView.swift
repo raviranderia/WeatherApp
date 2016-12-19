@@ -55,9 +55,6 @@ final class TableFooterView: UIView, UITableViewDelegate, UITableViewDataSource 
         registerCell()
         weatherDetailsTableView.backgroundColor = UIColor.blue
         weatherDetailsTableView.reloadData()
-        var frame = weatherDetailsTableView.frame
-        frame.size.height = weatherDetailsTableView.contentSize.height;
-        weatherDetailsTableView.frame = frame
     }
     
     private func registerCell() {
