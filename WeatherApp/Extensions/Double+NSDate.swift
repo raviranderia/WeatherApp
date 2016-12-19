@@ -10,12 +10,12 @@ import Foundation
 
 enum Weekday: Int {
     case Sunday = 1
-    case Monday = 2
-    case Tuesday = 3
-    case Wednesday = 4
-    case Thursday = 5
-    case Friday = 6
-    case Saturday = 7
+    case Monday
+    case Tuesday
+    case Wednesday
+    case Thursday
+    case Friday
+    case Saturday
     
     var weekdayString: String {
         switch self {

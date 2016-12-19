@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class WeatherTableViewCell: UITableViewCell {
+final class WeatherTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!

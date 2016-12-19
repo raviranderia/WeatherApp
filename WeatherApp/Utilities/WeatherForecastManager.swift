@@ -10,10 +10,10 @@ import Foundation
 import SwiftyJSON
 
 struct WeatherForecastManager {
-    let requestManager: RequestManager
+    private let requestManager: RequestManager
     
-    let currentCity = "Mumbai"
-    let numberOfDays = 7
+    private let currentCity = "Mumbai"
+    private let numberOfDays = 7
     
     init(requestManager: RequestManager = RequestManager(apiKey: "e0ba8833aa1edee3f8d9c45c87dc412c", temperatureFormat: .Celsius)) {
         self.requestManager = requestManager

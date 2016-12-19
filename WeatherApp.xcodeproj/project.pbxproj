@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		0DC7FFC31E071C1500318C23 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFC21E071C1500318C23 /* WeatherTableViewCell.swift */; };
 		0DC7FFC51E07263200318C23 /* WeatherTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFC41E07263200318C23 /* WeatherTableViewCellModel.swift */; };
+		0DC7FFC91E079C2000318C23 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFC81E079C2000318C23 /* TableHeaderView.swift */; };
+		0DC7FFCB1E079C4D00318C23 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC7FFCA1E079C4D00318C23 /* TableHeaderView.xib */; };
+		0DC7FFCD1E07D1E500318C23 /* TableHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFCC1E07D1E500318C23 /* TableHeaderViewModel.swift */; };
+		0DC7FFCF1E07E12600318C23 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFCE1E07E12600318C23 /* UIView+Nib.swift */; };
+		0DC7FFD11E07E68E00318C23 /* TableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFD01E07E68E00318C23 /* TableFooterView.swift */; };
+		0DC7FFD51E07E6C000318C23 /* TableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC7FFD41E07E6C000318C23 /* TableFooterView.xib */; };
+		0DC7FFD71E07E6E900318C23 /* TableFooterViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFD61E07E6E900318C23 /* TableFooterViewCellModel.swift */; };
+		0DC7FFDB1E07E8A000318C23 /* TableFooterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC7FFD91E07E8A000318C23 /* TableFooterViewCell.swift */; };
+		0DC7FFDC1E07E8A000318C23 /* TableFooterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC7FFDA1E07E8A000318C23 /* TableFooterViewCell.xib */; };
 		0DFAB40C1E0675F400DD1EF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFAB40B1E0675F400DD1EF9 /* AppDelegate.swift */; };
 		0DFAB4111E0675F400DD1EF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DFAB40F1E0675F400DD1EF9 /* Main.storyboard */; };
 		0DFAB4161E0675F400DD1EF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DFAB4141E0675F400DD1EF9 /* LaunchScreen.storyboard */; };
@@ -38,6 +47,15 @@
 		0A7F9A6D4151797CE93B3FD1 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		0DC7FFC21E071C1500318C23 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherTableViewCell.swift; path = Features/Main/WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		0DC7FFC41E07263200318C23 /* WeatherTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCellModel.swift; sourceTree = "<group>"; };
+		0DC7FFC81E079C2000318C23 /* TableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableHeaderView.swift; path = Features/Main/TableViewHeader/TableHeaderView.swift; sourceTree = "<group>"; };
+		0DC7FFCA1E079C4D00318C23 /* TableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableHeaderView.xib; path = Features/Main/TableViewHeader/TableHeaderView.xib; sourceTree = "<group>"; };
+		0DC7FFCC1E07D1E500318C23 /* TableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableHeaderViewModel.swift; path = Features/Main/TableViewHeader/TableHeaderViewModel.swift; sourceTree = "<group>"; };
+		0DC7FFCE1E07E12600318C23 /* UIView+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Nib.swift"; path = "Extensions/UIView+Nib.swift"; sourceTree = "<group>"; };
+		0DC7FFD01E07E68E00318C23 /* TableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableFooterView.swift; path = Features/Main/TableViewFooter/TableFooterView.swift; sourceTree = "<group>"; };
+		0DC7FFD41E07E6C000318C23 /* TableFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableFooterView.xib; path = Features/Main/TableViewFooter/TableFooterView.xib; sourceTree = "<group>"; };
+		0DC7FFD61E07E6E900318C23 /* TableFooterViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableFooterViewCellModel.swift; path = Features/Main/TableViewFooter/TableFooterViewCellModel.swift; sourceTree = "<group>"; };
+		0DC7FFD91E07E8A000318C23 /* TableFooterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableFooterViewCell.swift; path = Features/Main/TableViewFooter/TableFooterCell/TableFooterViewCell.swift; sourceTree = "<group>"; };
+		0DC7FFDA1E07E8A000318C23 /* TableFooterViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableFooterViewCell.xib; path = Features/Main/TableViewFooter/TableFooterCell/TableFooterViewCell.xib; sourceTree = "<group>"; };
 		0DFAB4081E0675F400DD1EF9 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DFAB40B1E0675F400DD1EF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DFAB4101E0675F400DD1EF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +98,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DC7FFC61E079B7D00318C23 /* TableViewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				0DC7FFC81E079C2000318C23 /* TableHeaderView.swift */,
+				0DC7FFCA1E079C4D00318C23 /* TableHeaderView.xib */,
+				0DC7FFCC1E07D1E500318C23 /* TableHeaderViewModel.swift */,
+			);
+			name = TableViewHeader;
+			sourceTree = "<group>";
+		};
+		0DC7FFC71E079B8800318C23 /* TableViewFooter */ = {
+			isa = PBXGroup;
+			children = (
+				0DC7FFD81E07E86100318C23 /* TableFooterCell */,
+				0DC7FFD01E07E68E00318C23 /* TableFooterView.swift */,
+				0DC7FFD41E07E6C000318C23 /* TableFooterView.xib */,
+			);
+			name = TableViewFooter;
+			sourceTree = "<group>";
+		};
+		0DC7FFD81E07E86100318C23 /* TableFooterCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DC7FFD91E07E8A000318C23 /* TableFooterViewCell.swift */,
+				0DC7FFDA1E07E8A000318C23 /* TableFooterViewCell.xib */,
+				0DC7FFD61E07E6E900318C23 /* TableFooterViewCellModel.swift */,
+			);
+			name = TableFooterCell;
+			sourceTree = "<group>";
+		};
 		0DFAB3FF1E0675F400DD1EF9 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +201,8 @@
 		0DFAB42E1E06777500DD1EF9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0DC7FFC71E079B8800318C23 /* TableViewFooter */,
+				0DC7FFC61E079B7D00318C23 /* TableViewHeader */,
 				0DFAB42F1E0677FD00DD1EF9 /* MainViewController.swift */,
 				0DFAB40F1E0675F400DD1EF9 /* Main.storyboard */,
 				0DC7FFC21E071C1500318C23 /* WeatherTableViewCell.swift */,
@@ -173,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				0DFAB4421E06B10B00DD1EF9 /* Double+NSDate.swift */,
+				0DC7FFCE1E07E12600318C23 /* UIView+Nib.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -294,9 +345,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC7FFCB1E079C4D00318C23 /* TableHeaderView.xib in Resources */,
 				0DFAB4161E0675F400DD1EF9 /* LaunchScreen.storyboard in Resources */,
 				0DFAB4321E06781900DD1EF9 /* Assets.xcassets in Resources */,
 				0DFAB4111E0675F400DD1EF9 /* Main.storyboard in Resources */,
+				0DC7FFDC1E07E8A000318C23 /* TableFooterViewCell.xib in Resources */,
+				0DC7FFD51E07E6C000318C23 /* TableFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +461,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC7FFC91E079C2000318C23 /* TableHeaderView.swift in Sources */,
+				0DC7FFCF1E07E12600318C23 /* UIView+Nib.swift in Sources */,
 				0DC7FFC31E071C1500318C23 /* WeatherTableViewCell.swift in Sources */,
 				0DFAB4381E06805D00DD1EF9 /* Router.swift in Sources */,
 				0DFAB4361E067DA900DD1EF9 /* RequestManager.swift in Sources */,
@@ -414,7 +470,11 @@
 				0DFAB4301E0677FD00DD1EF9 /* MainViewController.swift in Sources */,
 				0DFAB43B1E06A88900DD1EF9 /* Weather.swift in Sources */,
 				0DC7FFC51E07263200318C23 /* WeatherTableViewCellModel.swift in Sources */,
+				0DC7FFDB1E07E8A000318C23 /* TableFooterViewCell.swift in Sources */,
+				0DC7FFD11E07E68E00318C23 /* TableFooterView.swift in Sources */,
+				0DC7FFCD1E07D1E500318C23 /* TableHeaderViewModel.swift in Sources */,
 				0DFAB4411E06B0E200DD1EF9 /* WeatherForecastManager.swift in Sources */,
+				0DC7FFD71E07E6E900318C23 /* TableFooterViewCellModel.swift in Sources */,
 				0DFAB4431E06B10B00DD1EF9 /* Double+NSDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

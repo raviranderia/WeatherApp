@@ -32,8 +32,8 @@ public enum WeatherResult {
 }
 
 
-class RequestManager {
-    var params = [String : AnyObject]()
+final class RequestManager {
+    private var params = [String : AnyObject]()
     public var temperatureFormat: TemperatureFormat = .Kelvin {
         didSet {
             params["units"] = temperatureFormat.rawValue as AnyObject?
