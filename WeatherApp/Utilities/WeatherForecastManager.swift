@@ -9,7 +9,12 @@
 import Foundation
 import SwiftyJSON
 
-struct WeatherForecastManager {
+protocol WeatherForecastManagerProtocol {
+    func fetchForecastList(handler: @escaping (( WeatherResult<[Weather]>) -> Void))
+    func fetchCurrentWeather(handler: @escaping (WeatherResult<(Weather)>) -> Void)
+}
+
+struct WeatherForecastManager: WeatherForecastManagerProtocol {
     private let requestManager: RequestManagerProtocol
     
     private let currentCity = "Mumbai"
@@ -19,7 +24,7 @@ struct WeatherForecastManager {
         self.requestManager = requestManager
     }
     
-    func fetchForecastList(handler: @escaping (( WeatherResult<[Weather]?>) -> Void)) {
+    func fetchForecastList(handler: @escaping (( WeatherResult<[Weather]>) -> Void)) {
         var finalForecastArray = [Weather]()
         requestManager.dailyForecastWeatherByCityNameAsJson(cityName: currentCity, numberOfDays: numberOfDays) { (weatherResult) in
             switch weatherResult {
@@ -35,7 +40,7 @@ struct WeatherForecastManager {
         }
     }
     
-    func fetchCurrentWeather(handler: @escaping (WeatherResult<(Weather?)>) -> Void) {
+    func fetchCurrentWeather(handler: @escaping (WeatherResult<(Weather)>) -> Void) {
         requestManager.currentWeatherForecastByCityNameAsJson(cityName: currentCity) { weatherResult in
             switch weatherResult {
             case .Success(let jsonResult):

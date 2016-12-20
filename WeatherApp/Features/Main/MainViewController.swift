@@ -44,11 +44,9 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
             guard let strongSelf = self else { return }
             switch weatherResult {
             case .Success(let weatherForecastArray):
-                if let weatherForecastArray = weatherForecastArray {
-                    strongSelf.weatherForecastArray = weatherForecastArray
-                    DispatchQueue.main.async {
-                        strongSelf.weatherTableView.reloadData()
-                    }
+                strongSelf.weatherForecastArray = weatherForecastArray
+                DispatchQueue.main.async {
+                    strongSelf.weatherTableView.reloadData()
                 }
             case .Error(let error):
                 strongSelf.displayErrorAlert(message: error)
@@ -61,11 +59,9 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
             guard let strongSelf = self else { return }
             switch weatherResult {
             case .Success(let currentWeather):
-                if let currentWeather = currentWeather {
-                    DispatchQueue.main.async {
-                        strongSelf.configureTableViewHeader(currentWeather: currentWeather)
-                        strongSelf.configureTableViewFooter(currentWeather: currentWeather)
-                    }
+                DispatchQueue.main.async {
+                    strongSelf.configureTableViewHeader(currentWeather: currentWeather)
+                    strongSelf.configureTableViewFooter(currentWeather: currentWeather)
                 }
             case .Error(let error):
                 strongSelf.displayErrorAlert(message: error)
