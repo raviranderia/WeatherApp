@@ -31,10 +31,15 @@ public enum WeatherResult<T> {
     }
 }
 
+protocol RequestManagerProtocol {
+     func dailyForecastWeatherByCityNameAsJson(cityName: String, numberOfDays: Int, data: @escaping (WeatherResult<JSON>) -> Void)
+     func currentWeatherForecastByCityNameAsJson(cityName: String,data: @escaping (WeatherResult<JSON>) -> Void)
+}
 
-final class RequestManager {
+
+final class RequestManager: RequestManagerProtocol {
     private var params = [String : Any]()
-    public var temperatureFormat: TemperatureFormat = .Kelvin {
+    private var temperatureFormat: TemperatureFormat = .Kelvin {
         didSet {
             params["units"] = temperatureFormat.rawValue as Any?
         }

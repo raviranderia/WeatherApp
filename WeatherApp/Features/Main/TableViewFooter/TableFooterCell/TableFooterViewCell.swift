@@ -9,8 +9,8 @@
 import UIKit
 
 class TableFooterViewCell: UITableViewCell {
+    
     @IBOutlet weak var weatherProperty: UILabel!
-
     @IBOutlet weak var weatherPropertyValue: UILabel!
 
     func configureTableFooterViewCell(tableFooterViewCellModel: TableFooterViewCellModel) {

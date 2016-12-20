@@ -42,7 +42,7 @@ struct Weather {
         self.day = weatherJSON["dt"].doubleValue.getDayFromTimestamp()
         self.speed = weatherJSON["speed"].doubleValue
         self.pressure = weatherJSON["pressure"].doubleValue
-        self.degree = weatherJSON["degree"].doubleValue
+        self.degree = weatherJSON["deg"].doubleValue
         
         let weather = weatherJSON["weather"].arrayValue
         self.mainWeather = weather[0]["main"].stringValue
