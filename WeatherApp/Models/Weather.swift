@@ -19,9 +19,9 @@ struct Weather {
     var degree: Double
     
     //weather
-    var mainWeather: String
-    var mainWeatherDescription: String
-    var iconId: String
+    var mainWeather: String?
+    var mainWeatherDescription: String?
+    var iconId: String?
     
     //temp
     var nightTemp: Double?
@@ -45,9 +45,11 @@ struct Weather {
         self.degree = weatherJSON["deg"].doubleValue
         
         let weather = weatherJSON["weather"].arrayValue
-        self.mainWeather = weather[0]["main"].stringValue
-        self.mainWeatherDescription = weather[0]["description"].stringValue
-        self.iconId = weather[0]["icon"].stringValue
+        if weather.count > 0 {
+            self.mainWeather = weather[0]["main"].stringValue
+            self.mainWeatherDescription = weather[0]["description"].stringValue
+            self.iconId = weather[0]["icon"].stringValue
+        }
         
         
         if let temperature = weatherJSON["temp"].dictionaryObject {

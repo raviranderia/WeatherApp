@@ -22,7 +22,7 @@ struct TableHeaderViewModel {
         self.currentTemperatureLabel = weatherData.currentTemperature?.description.degree
         self.maxLabel = weatherData.maxTemp?.description.degree
         self.minLabel = weatherData.minTemp?.description.degree
-        if let url = URL(string: "http://openweathermap.org/img/w/" + weatherData.iconId + ".png") {
+        if let iconId = weatherData.iconId, let url = URL(string: "http://openweathermap.org/img/w/" + iconId + ".png") {
             self.currentWeatherImageURL = url
         }
 
