@@ -74,8 +74,11 @@ final class RequestManager: RequestManagerProtocol {
     private func apiCall(method: Router, response: @escaping (WeatherResult<JSON>) -> Void) {
         Alamofire.request(method).responseJSON { (weatherResponse) in
             let responseResult = weatherResponse.result
-            if responseResult.isSuccess {
+            if responseResult.isSuccess && responseResult.error == nil {
                 let jsonDictionary = JSON(responseResult.value as Any)
+                if jsonDictionary["cod"].stringValue != "200" {
+                    response(.Error(jsonDictionary["message"].stringValue))
+                }
                 response(.Success(jsonDictionary))
             } else if let error = responseResult.error {
                 response(.Error(error.localizedDescription))

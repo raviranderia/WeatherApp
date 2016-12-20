@@ -20,6 +20,7 @@ struct WeatherForecastManager: WeatherForecastManagerProtocol {
     private let currentCity = "Mumbai"
     private let numberOfDays = 7
     
+    // TODO: Enter API Key
     init(requestManager: RequestManagerProtocol = RequestManager(apiKey: "YOUR_API_KEY", temperatureFormat: .Celsius)) {
         self.requestManager = requestManager
     }
