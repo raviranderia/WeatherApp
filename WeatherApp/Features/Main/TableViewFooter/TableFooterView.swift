@@ -50,11 +50,15 @@ final class TableFooterView: UIView, UITableViewDelegate, UITableViewDataSource 
     
     func configureWeatherDetailsTableView(weatherData: Weather) {
         self.weatherData = weatherData
-        weatherDetailsTableView.delegate = self
-        weatherDetailsTableView.dataSource = self
+        setTableViewDataSourceAndDelegate()
         registerCell()
         weatherDetailsTableView.backgroundColor = UIColor.blue
         weatherDetailsTableView.reloadData()
+    }
+    
+    private func setTableViewDataSourceAndDelegate() {
+        weatherDetailsTableView.delegate = self
+        weatherDetailsTableView.dataSource = self
     }
     
     private func registerCell() {

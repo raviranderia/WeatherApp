@@ -12,11 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TableFooterView" customModule="WeatherApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="289"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" separatorStyle="none" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DCI-Hf-ZG2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" separatorStyle="none" sectionIndexMinimumDisplayRowCount="5" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DCI-Hf-ZG2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="289"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -31,7 +31,7 @@
             <connections>
                 <outlet property="weatherDetailsTableView" destination="DCI-Hf-ZG2" id="6c2-T6-SDL"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="74.5"/>
+            <point key="canvasLocation" x="33.5" y="-86.5"/>
         </view>
     </objects>
 </document>

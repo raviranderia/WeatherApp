@@ -17,7 +17,6 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
     private let weatherForecastManager = WeatherForecastManager()
     private let errorSegueIdentifier = "internetConnectionSegue"
     private var errorMessage: String?
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,7 +37,6 @@ final class MainViewController: UIViewController, UITableViewDelegate, UITableVi
         let tableFooterView = TableFooterView.instanceFromNib()
         tableFooterView.configureWeatherDetailsTableView(weatherData: currentWeather)
         weatherTableView.tableFooterView = tableFooterView
-        weatherTableView.tableFooterView?.frame.size = CGSize(width: view.frame.width, height: tableFooterView.weatherDetailsTableView.contentSize.height)
     }
     
     private func configureWeatherForecastArray() {
